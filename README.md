@@ -1,4 +1,4 @@
-## 🛰️ ROS 2 Mars Rover: Autonomous Navigation on the Moon 🌕
+## 🛰️ Mars Rover: Autonomous Navigation on the Moon 🌕
 This project simulates an autonomous Mars-style rover navigating a lunar terrain using ROS 2 (Humble), Gazebo, and custom navigation stacks. The rover is equipped with simulated LIDAR, joystick teleoperation, autonomous obstacle avoidance, and a modular control framework designed for extreme planetary environments
 
 ## Table of Contents
