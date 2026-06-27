@@ -1,0 +1,32 @@
+# Pure Pursuit Controller Configuration
+# Geometric path tracking
+
+/**:
+  ros__parameters:
+    controller_type: pure_pursuit
+    
+    # Vehicle parameters
+    wheelbase: 1.2  # meters
+    max_steering_angle: 35.0  # degrees
+    
+    # Lookahead parameters
+    lookahead_distance: 0.6  # meters
+    min_lookahead_distance: 0.3  # meters
+    max_lookahead_distance: 0.9  # meters
+    lookahead_time: 1.5  # seconds
+    velocity_scaling: true
+    
+    # Velocity parameters
+    max_angular_velocity: 1.0  # rad/s
+    desired_velocity: 0.3  # m/s
+    approach_velocity_scaling_dist: 1.0  # meters
+    min_approach_velocity: 0.05  # m/s
+    
+    # Goal parameters
+    goal_tolerance: 0.3  # meters
+    goal_theta_tolerance: 0.5  # radians
+    
+    # Path following
+    use_velocity_scaled_lookahead: true
+    use_collision_detection: false
+    max_allowed_time_to_collision: 1.0  # seconds

@@ -1,54 +1,114 @@
-## 🛰️ Mars Rover: Autonomous Navigation on the Moon 🌕
-This project simulates an autonomous Mars-style rover navigating a lunar terrain using ROS 2 (Humble), Gazebo, and custom navigation stacks. The rover is equipped with simulated LIDAR, joystick teleoperation, autonomous obstacle avoidance, and a modular control framework designed for extreme planetary environments
+# 🛰️ Lunar Rover Autonomous Navigation Framework 🌕
 
-## Table of Contents
+A complete autonomous navigation framework for lunar rovers operating on unstructured lunar terrain, built with ROS 2 Humble.
 
-1. [Installation](#installation)
-    - [System Preparation & Package Installation]
-2. [Linux Service](#usage)
-3. [Gazebo Simulation](#SaveMap)
+## Features
+
+- **Global Path Planning**: A*, Hybrid A*, and RRT* algorithms
+- **Local Control**: Dynamic Window Approach (DWA) and Pure Pursuit
+- **Terrain Analysis**: Multi-factor cost system including elevation, slope, rock hazards, energy, and illumination
+- **Ackermann Kinematics**: Respects rover steering constraints and minimum turning radius
+- **Gazebo Simulation**: Ready-to-run lunar terrain simulation
+- **Jupyter Notebooks**: Interactive algorithm comparison and analysis
+
+## Quick Start
+
+### Launch Full Simulation
+
+```bash
+ros2 launch moon_rover_navigation simulation.launch.py
+```
+
+### Launch Planner Only
+
+```bash
+ros2 launch moon_rover_navigation planner.launch.py planner_type:=hybrid_astar
+```
+
+### Launch Controller Only
+
+```bash
+ros2 launch moon_rover_navigation controller.launch.py controller_type:=pure_pursuit
+```
+
+## Project Structure
+
+```
+moon_rover_navigation/
+├── src/                    # Source code
+│   └── moon_rover_navigation/
+│       ├── nodes/          # ROS 2 nodes
+│       ├── planners.py     # Global planners
+│       ├── local_planners.py  # Local controllers
+│       ├── terrain_cost.py # Terrain cost system
+│       └── rover_constraints.py  # Rover kinematics
+│
+├── launch/                 # Launch files
+├── config/                 # Configuration
+├── docs/                   # Documentation
+├── notebooks/              # Jupyter notebooks
+├── tests/                  # Unit tests
+├── maps/                   # Map storage
+├── worlds/                 # Gazebo worlds
+└── outputs/                # Planning outputs
+```
+
+## Navigation Stack
+
+- **Global Planners**: A* (baseline), Hybrid A* (non-holonomic), RRT* (exploration)
+- **Local Controllers**: DWA (optimization), Pure Pursuit (geometric)
+- **Terrain Costs**: Elevation, Slope, Rock, Energy, Illumination
 
 
 ## Installation
-#### System Preparation & Package Installation
-Clone the ros2_rover repository and install the dependencies
-```shell
-cd ~/ros2_ws/src
-git clone https://github.com/mgonzs13/ros2_rover
-cd ~/ros2_ws
+
+```bash
+# Clone repository
+git clone https://github.com/IsraelAfriyie-dev/Mars-Rover-Navigation-on-Moon.git
+cd Mars-Rover-Navigation-on-Moon
+
+# Install dependencies
 rosdep install --from-paths src -r -y
+
+# Build
 colcon build
+
+# Source
+source install/setup.bash
 ```
 
-## Linux Service 
-Set up and launch your robot software as a system-level service, so it can run without manually starting it each time.
-```shell
-cd ~/ros2_ws/src/ros2_rover/rover_service
-sudo ./install.sh
+## Documentation
+
+- [Installation Guide](docs/installation.md)
+- [Architecture Documentation](docs/README.md)
+- [Planner Comparison](docs/planner_comparison.md)
+
+## Testing
+
+```bash
+# Run all tests
+pytest tests/
+
+# Run specific test file
+pytest tests/test_planners.py -v
 ```
 
-##  Check rover service 
-Set up a systemd-based launch service for the robot.
-```shell
-cd ~/ros2_ws/src/ros2_rover/rover_service
-sudo ./install.sh
-```
+## Rover Constraints
 
+- **Ackermann Steering**: Minimum turning radius of 0.5m
+- **Maximum Slope**: 30° forward/backward, 25° lateral
+- **Maximum Velocity**: 0.5 m/s
+- **Maximum Acceleration**: 0.3 m/s²
 
-## Gazebo Simulation
-This command launches the Gazebo simulation environment configured for lunar terrain, enabling the Mars-style rover to operate and navigate as if it were on the surface of the Moon.
-```shell
-ros2 launch rover_gazebo moon.launch.py
- ```
+## License
 
-<div align="center">
-  <img src="RVIZ.gif" alt="Nav2 Simulation Demo" width="30%"/>
-</div>
+MIT License
 
+## Acknowledgments
 
-<div align="center">
-  <img src="mars_rover.gif" alt="Nav2 Simulation Demo" width="30%"/>
-</div>
+Based on the [ros2_rover](https://github.com/mgonzs13/ros2_rover) project.
+
+Built with ROS 2 Humble, Nav2, and Gazebo.
 
 
 

@@ -1,0 +1,29 @@
+# Terrain Cost Configuration
+# Cost weights for terrain traversability
+
+/**:
+  ros__parameters:
+    # Cost weights
+    elevation_weight: 1.0
+    slope_weight: 2.0
+    rock_weight: 3.0
+    energy_weight: 1.5
+    illumination_weight: 1.0
+    
+    # Terrain constraints
+    max_slope_degrees: 30.0
+    max_lateral_slope_degrees: 25.0
+    rock_threshold: 0.5
+    
+    # Cost thresholds
+    traversability_threshold: 0.7  # Below this is traversable
+    obstacle_threshold: 0.9  # Above this is blocked
+    
+    # Rover constraints
+    min_turning_radius: 0.5  # meters
+    max_velocity: 0.5  # m/s
+    max_acceleration: 0.3  # m/s^2
+    
+    # Illumination parameters
+    min_safe_illumination: 0.3
+    shadow_penalty: 1.5
