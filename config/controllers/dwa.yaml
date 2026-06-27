@@ -1,0 +1,33 @@
+# Dynamic Window Approach (DWA) Controller Configuration
+# Local trajectory optimization
+
+/**:
+  ros__parameters:
+    controller_type: dwa
+    
+    # Velocity limits
+    max_velocity: 0.5  # m/s
+    max_angular_velocity: 1.0  # rad/s
+    max_acceleration: 0.3  # m/s^2
+    max_angular_acceleration: 1.0  # rad/s^2
+    
+    # Velocity resolution
+    velocity_resolution: 15
+    angular_resolution: 15
+    
+    # Prediction parameters
+    prediction_horizon: 1.0  # seconds
+    dt: 0.1  # seconds
+    
+    # Goal parameters
+    goal_tolerance: 0.2  # meters
+    
+    # Cost weights
+    heading_weight: 0.8
+    distance_weight: 0.1
+    velocity_weight: 0.1
+    obstacle_cost_scale: 1.0
+    
+    # Obstacle avoidance
+    obstacle_threshold: 0.7
+    robot_radius: 0.3  # meters

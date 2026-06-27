@@ -1,0 +1,27 @@
+# RRT* Planner Configuration
+# Optimal sampling-based planner for exploration
+
+/**:
+  ros__parameters:
+    planner_type: rrt_star
+    
+    # Environment bounds
+    bounds_x: [0.0, 50.0]  # meters
+    bounds_y: [0.0, 50.0]  # meters
+    
+    # Vehicle constraints
+    min_turning_radius: 0.5  # meters
+    step_size: 0.3  # meters
+    
+    # Planning parameters
+    max_iterations: 1000
+    goal_sample_rate: 0.1  # Probability of sampling goal
+    goal_tolerance: 0.5  # meters
+    rewiring_radius: 0.5  # meters
+    
+    # Cost weights
+    obstacle_cost_scale: 1.0
+    
+    # Optimization
+    optimize_path: true
+    path_simplification: true

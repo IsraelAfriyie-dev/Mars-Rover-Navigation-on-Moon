@@ -1,0 +1,22 @@
+# A* Planner Configuration
+# Baseline grid-based path planner
+
+/**:
+  ros__parameters:
+    planner_type: astar
+    
+    # Grid parameters
+    grid_resolution: 0.1  # meters
+    heuristic: diagonal  # Options: euclidean, manhattan, diagonal
+    
+    # Planning parameters
+    max_iterations: -1  # -1 for unlimited
+    goal_tolerance: 0.5  # meters
+    
+    # Cost weights
+    cost_travel_multiplier: 1.0
+    cost_dijkstra: false
+    
+    # Obstacle handling
+    allow_unknown: true
+    allow_diagonal: true

@@ -1,0 +1,9 @@
+# Rover status message
+string state
+float64 battery_level
+float64 power_consumption
+geometry_msgs/Pose current_pose
+float64 current_velocity
+float64 distance_to_goal
+bool path_active
+float64 progress_percentage

@@ -1,0 +1,37 @@
+# Hybrid A* Planner Configuration
+# Non-holonomic path planner for Ackermann vehicles
+
+/**:
+  ros__parameters:
+    planner_type: hybrid_astar
+    
+    # Grid parameters
+    grid_resolution: 0.2  # meters
+    theta_resolution: 36  # Number of angle bins
+    
+    # Vehicle constraints
+    min_turning_radius: 0.5  # meters
+    wheelbase: 1.2  # meters
+    
+    # Planning parameters
+    max_iterations: 10000
+    max_planning_time: 10.0  # seconds
+    goal_tolerance: 0.5  # meters
+    
+    # Cost weights
+    cost_travel_multiplier: 2.0
+    reverse_penalty: 2.1
+    change_penalty: 0.0
+    non_straight_penalty: 1.0
+    cost_penalty: 2.5
+    
+    # Search parameters
+    angle_quantization_bins: 256
+    analytic_expansion_ratio: 20.0
+    analytic_expansion_max_length: 20.0
+    retrospective_penalty: 0.025
+    lookup_table_size: 20.0
+    
+    # Obstacle handling
+    allow_unknown: true
+    cache_obstacle_heuristic: true
